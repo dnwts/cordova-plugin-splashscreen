@@ -26,6 +26,7 @@ using Microsoft.Phone.Info;
 using System.Windows.Controls.Primitives;
 using System.Diagnostics;
 using System.Windows.Media.Imaging;
+using uk.co.safetybank;
 
 namespace WPCordovaClassLib.Cordova.Commands
 {
@@ -62,6 +63,10 @@ namespace WPCordovaClassLib.Cordova.Commands
         {
             Deployment.Current.Dispatcher.BeginInvoke(() =>
             {
+		if (Application.Current.RootVisual == null)
+                {
+                    Application.Current.RootVisual = ((App)Application.Current).RootFrame;
+                }
                 this.popup.IsOpen = false;
             });
         }
